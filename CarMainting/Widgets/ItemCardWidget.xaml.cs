@@ -6,81 +6,31 @@ namespace CarMainting.Widgets;
 
 public partial class ItemCard : ContentView
 {
-
-
-
     public ItemCard()
     {
-
         InitializeComponent();
     }
 
     public string a7a { get; set; }
 
-    public static BindableProperty ServiceNameProperty = BindableProperty.Create(nameof(ItemCard), typeof(string), typeof(ItemCardWidgetModel)
-      , defaultValue: string.Empty, propertyChanged: TitleTextPropertyChaned);
-
-
-    public static void TitleTextPropertyChaned(BindableObject bindable, object oldvalue, object newValue)
-    {
-        var control = (ItemCard)bindable;
-        control.serviceName.Text = newValue?.ToString();
-
-    }
-
-
-
-
-
+    public static BindableProperty ServiceNameTextProperty = BindableProperty.Create(nameof(ServiceNameText), typeof(string), typeof(ItemCard)
+      , defaultValue: string.Empty);
 
 
     public string ServiceNameText
     {
-        get
-        {
-
-            return base.GetValue(ServiceNameProperty)?.ToString();
-
-        }
-        set
-        {
-            base.SetValue(ServiceNameProperty, value);
-
-        }
+        get => (string)GetValue(ServiceNameTextProperty);
+        set => SetValue(ServiceNameTextProperty, value);
     }
 
+    public static BindableProperty ImageUrlProperty = BindableProperty.Create(nameof(ImageUrl), typeof(string), typeof(ItemCard)
+    , defaultValue: string.Empty);
 
-
-
-    public static BindableProperty ImageProperty = BindableProperty.Create(nameof(ImageProperty), typeof(string), typeof(ItemCard)
-    , defaultValue: string.Empty, propertyChanged: ImagePropertyChaned);
-
-
-    public static void ImagePropertyChaned(BindableObject bindable, object oldvalue, object newValue)
+    public string ImageUrl
     {
-        var control = (ItemCard)bindable;
-        control.image.Source = newValue?.ToString();
-
+        get => (string)GetValue(ImageUrlProperty);
+        set => SetValue(ImageUrlProperty, value);
     }
-
-    public object ImageUrl
-    {
-        get
-        {
-
-            return base.GetValue(ImageProperty)?.ToString();
-
-        }
-        set
-        {
-            base.SetValue(ImageProperty, value);
-
-        }
-    }
-
-
-
-
 
     private async void gotoSellerScreen(object sender, EventArgs e)
     {

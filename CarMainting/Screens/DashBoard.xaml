@@ -9,12 +9,9 @@
              x:DataType="viewmodel:DashBoardViewModel"
              Shell.NavBarIsVisible="True"
              Title="{Binding Title}">
-
-
-
     <StackLayout HorizontalOptions="Center">
         <Label Text="{Binding TotalHours }" />
-        <widget:ItemCard ServiceNameText="sfdsfsd"/>
+        <widget:ItemCard ServiceNameText="{Binding Title}"/>
         <AbsoluteLayout HeightRequest="700">
          
             <Border   AbsoluteLayout.LayoutBounds="0,0,1,200"
@@ -26,8 +23,6 @@
                 <Border.Shadow>
                     <Shadow Radius="25"
                             Opacity="1" />
-
-
                 </Border.Shadow>
                 <StackLayout Margin="0,30,0,0"
                              HorizontalOptions="Center">
