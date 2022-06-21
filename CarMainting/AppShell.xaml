@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="CarMainting.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:screens="clr-namespace:CarMainting.Screens"
+       FlyoutHeaderBehavior="CollapseOnScroll"
+     
+       xmlns:local="clr-namespace:CarMainting">
+
+
+    <!--
+        The overall app visual hierarchy is defined here, along with navigation.
+        Ensure atleast a Flyout item or a TabBar is defined for Shell to work
+    -->
+    <Shell.Resources>
+        <!--
+        Define the resources to be used within this Shell visual hierarchy
+    -->
+
+
+        <Style x:Key="Dashboard"
+               TargetType="Element">
+            <Setter Property="Shell.TabBarBackgroundColor"
+                    Value="#761d80" />
+            <Setter Property="Shell.TabBarTitleColor"
+                    Value="White" />
+            <Setter Property="Shell.TitleColor"
+                    Value="White" />
+            <Setter Property="Shell.TabBarUnselectedColor"
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.TabBarDisabledColor"
+                    Value="#95FFFFFF" />
+        </Style>
+
+
+        <Style x:Key="Service"
+               TargetType="Element">
+            <Setter Property="Shell.TabBarBackgroundColor"
+                    Value="Green" />
+
+            <Setter Property="Shell.TabBarTitleColor"
+                    Value="White" />
+            <Setter Property="Shell.TitleColor"
+                    Value="White" />
+            <Setter Property="Shell.TabBarUnselectedColor"
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.TabBarDisabledColor"
+                    Value="#95FFFFFF" />
+        </Style>
+
+
+        <Style x:Key="Agency"
+               TargetType="Element">
+            <Setter Property="Shell.TabBarBackgroundColor"
+                    Value="#0f2594" />
+            <Setter Property="Shell.TabBarTitleColor"
+                    Value="White" />
+            <Setter Property="Shell.TitleColor"
+                    Value="White" />
+            <Setter Property="Shell.TabBarUnselectedColor"
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.TabBarDisabledColor"
+                    Value="#95FFFFFF" />
+        </Style>
+    </Shell.Resources>
+    <!--
+        When the Flyout is visible this defines the content to display in the flyout.
+        FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element
+    -->
+    <!--
+        Uncomment the below section to enable Shell Flyout item(s)
+        And ensure appropriate page definitions are available for it work as expected
+    -->
+
+
+    <!--<Shell.FlyoutHeader>
+        <Grid BackgroundColor="#761d80"
+                     Padding="14,10,4,4" HeightRequest="150">
+
+           
+                <Label 
+                       Text="dasdasd" />
+         
+        </Grid>
+           
+    </Shell.FlyoutHeader>-->
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid  BackgroundColor="#761d80"
+                  HeightRequest="200">
+             
+                <!--<Label Text="mostafaihab2019@hmail.com"
+                       Margin="0,0,0,20"
+                       VerticalOptions="End"
+                       FontSize="19"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" />-->
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+
+
+
+
+    <!--<FlyoutItem Title="Dashboard">
+
+
+        <ShellContent   Icon="dashboard3.png"
+                        Title="Dashboard"
+                       
+                        ContentTemplate="{DataTemplate screens:DashBoard}" /> 
+    </FlyoutItem>-->
+   
+    <FlyoutItem Title="Calendar">
+
+        <ShellContent   Icon="dashboard.png"
+                        Title="Dashboard"
+                        Style="{StaticResource Dashboard}"
+                        Shell.FlyoutHeight="160"
+                    
+                        ContentTemplate="{DataTemplate screens:DashBoard}">
+
+        </ShellContent>
+        <ShellContent  Icon="carservice.png"
+                       Title="Service"
+                       Shell.NavBarIsVisible="False"
+                       Style="{StaticResource Service}"
+                       ContentTemplate="{DataTemplate screens:DashBoard}" />
+        <ShellContent Icon="agency.png"
+                      Title="Agency"
+                      Shell.DisabledColor="White"
+                      Shell.NavBarIsVisible="False"
+                      Style="{StaticResource Agency}"
+                      ContentTemplate="{DataTemplate screens:DashBoard}" />
+     
+    </FlyoutItem>
+    <FlyoutItem Title="Search">
+        <ShellContent Shell.TitleColor="Black" ContentTemplate="{DataTemplate local:SearchPage}"
+                      Route="search" />
+    </FlyoutItem>
+    <FlyoutItem Title="Settings">
+        <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}"
+                      Route="settings" />
+    </FlyoutItem>
+  
+    <!--<screens:NewShell />-->
+   
+    <!--
+        When the Flyout is visible this will be a menu item you can tie a click behavior to
+    -->
+    <!--
+        Uncomment the below section to enable Menu item(s)
+        And ensure appropriate page definitions are available for it work as expected
+    -->
+    <MenuItem Clicked="OnMenuItemClicked"
+              Text="Logout" />
+    <!--
+        TabBar lets you define content that won't show up in a Flyout menu. When this content is active
+        the flyout menu won't be available. This is useful for creating areas of the application where
+        you don't want users to be able to navigate away from. If you would like to navigate to this
+        content you can do so by calling
+        await Shell.Current.GoToAsync("//login");
+    -->
+    <!--
+        Uncomment the below section to enable TabBar item(s)
+        And ensure appropriate page definitions are available for it work as expected
+    -->
+    <TabBar>
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"
+                      Route="login" />
+    </TabBar>
+    <!-- Optional Templates
+    // These may be provided inline as below or as separate classes.
+
+    // This header appears at the top of the Flyout
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid>ContentHere</Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    // ItemTemplate is for ShellItems as displayed in a Flyout
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Title, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    // MenuItemTemplate is for MenuItems as displayed in a Flyout
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Text, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    // This footer appears at the bottom of the Flyout
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <Grid>ContentHere</Grid>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+    -->
+</Shell>

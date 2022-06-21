@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CarMainting"
+            
+             x:Class="CarMainting.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Additional Styles -->
+           
+
+            <x:Double x:Key="ItemSpacing">10</x:Double>
+
+            <Style ApplyToDerivedTypes="True" TargetType="StackBase">
+                <Setter Property="Spacing" Value="{StaticResource ItemSpacing}" />
+            </Style>
+
+            <Style x:Key="MauiLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Primary}}" />
+            </Style>
+
+            <Style x:Key="Action" TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}" />
+                <Setter Property="TextColor"
+                        Value="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" />
+                <Setter Property="FontFamily"
+                        Value="{StaticResource AppFont}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource AppFontSize}" />
+                <Setter Property="Padding"
+                        Value="14,10" />
+            </Style>
+
+            <Style x:Key="PrimaryAction"
+                   TargetType="Button"
+                   BasedOn="{StaticResource Action}">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource Primary}" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource White}" />
+            </Style>
+
+
+
+
+            <Style x:Key="myGradient"
+                   TargetType="Frame">
+
+                <Setter  Property="Background">
+                    <Setter.Value>
+
+                        <LinearGradientBrush>
+
+                            <GradientStop Color="#1b8dde"
+                                          Offset="0.5" />
+                            <GradientStop Color="#064c7d"
+                                          Offset="1.0" />
+                        </LinearGradientBrush>
+
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="myPrimarybackGround"
+                   TargetType="StackLayout">
+
+                <Setter  Property="Background">
+                    <Setter.Value>
+
+                        <LinearGradientBrush StartPoint="0.8,2"
+                                             EndPoint="0,0">
+                            <GradientStop Color="#0b2352"
+                                          Offset="0.6" />
+                            <GradientStop Color="#1b428f"
+                                          Offset="0.7" />
+                            <GradientStop Color="#3165cc"
+                                          Offset="0.9" />
+                            <GradientStop Color="#457ded"
+                                          Offset="1" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

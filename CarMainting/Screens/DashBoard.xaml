@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarMainting.Screens.DashBoard"
+             xmlns:widget="clr-namespace:CarMainting.Widgets"
+             xmlns:model="clr-namespace:CarMainting.Model"
+             xmlns:viewmodel="clr-namespace:CarMainting.ViewModels"
+             xmlns:local="clr-namespace:CarMainting.Screens"
+             x:DataType="viewmodel:DashBoardViewModel"
+             Shell.NavBarIsVisible="True"
+             Title="{Binding Title}">
+
+
+
+    <StackLayout HorizontalOptions="Center">
+        <Label Text="{Binding TotalHours }" />
+        <widget:ItemCard ServiceNameText="sfdsfsd"/>
+        <AbsoluteLayout HeightRequest="700">
+         
+            <Border   AbsoluteLayout.LayoutBounds="0,0,1,200"
+                      AbsoluteLayout.LayoutFlags="WidthProportional"
+                      StrokeThickness="0"
+                      StrokeShape="RoundRectangle 0,0,40,40"
+                      BackgroundColor="#761d80"
+                      HeightRequest="200">
+                <Border.Shadow>
+                    <Shadow Radius="25"
+                            Opacity="1" />
+
+
+                </Border.Shadow>
+                <StackLayout Margin="0,30,0,0"
+                             HorizontalOptions="Center">
+                    <Label Text="My Car "
+                           TextColor="White"
+                           FontSize="22"
+                           FontAttributes="Bold" />
+                </StackLayout>
+            </Border>
+            <!--Icon menu-->
+            <Border   StrokeShape="RoundRectangle 20,20,20,40"
+                      AbsoluteLayout.LayoutBounds="50,70,1,20"
+                      StrokeThickness="0"
+                      HeightRequest="50"
+                      WidthRequest="50"
+                      BackgroundColor="#7b3882">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenDrawer" />
+                </Border.GestureRecognizers>
+                <StackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center">
+
+                    <Label FontSize="12"
+                           Text="More"
+                           TextColor="White" />
+                </StackLayout>
+
+                <Border.Shadow>
+                    <Shadow Radius="25"
+                            Opacity="1" />
+
+
+                </Border.Shadow>
+            </Border>
+
+
+
+            <AbsoluteLayout>
+                <StackLayout    AbsoluteLayout.LayoutBounds="50,40,300,450"
+                           
+                               x:Name="stack"
+                               Padding="0,120,0,0">
+
+                   
+
+                        <CollectionView   x:Name="collection">
+
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"
+                                                 HorizontalItemSpacing="15"
+                                                 VerticalItemSpacing="15"
+                                                 Span="2"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemsSource>
+                                <x:Array Type="{x:Type model:ItemCardWidgetModel}">
+                                    <model:ItemCardWidgetModel ServiceName="insepection "
+                                                               Image="insepection.png" />
+
+                                    <model:ItemCardWidgetModel ServiceName="Tires"
+                                                               Image="tire.png" />
+
+
+                                    <model:ItemCardWidgetModel ServiceName="battery Change"
+                                                               Image="battery.png"/>
+
+                                    <model:ItemCardWidgetModel ServiceName="Oil Change"
+                                                               Image="oil.png" />
+
+                                </x:Array>
+                            </CollectionView.ItemsSource>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:ItemCardWidgetModel">
+                                    <!--ServiceNameText="{Binding Source={x:Reference serviceName}, Path=serviceName}"-->
+                                    <!--<widget:ItemCard a7a="fdsfsdfsdf" />-->
+
+                                    <Frame>
+                                        
+
+                                        <StackLayout HeightRequest="120"
+                                                     HorizontalOptions="Center">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    CommandParameter="{Binding ServiceName}"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DashBoardViewModel}}, Path=GotochsellersCommand}"  />
+                                            </StackLayout.GestureRecognizers>
+
+
+                                            <Image x:Name="image"
+                                                   Source="{Binding Image}"
+                                                   HeightRequest="70"
+                                                   WidthRequest="70" />
+                                            
+
+                                            <!--<Button Clicked="Button_Clicked_1"  Text="{Binding ServiceName}"/>-->
+                                            <Label x:Name="serviceName"
+                                                   Text="{Binding ServiceName}" />
+                                         
+
+
+
+                                        </StackLayout>
+                                    </Frame>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                 
+                    <!--<Grid RowDefinitions="140,140"
+                          ColumnSpacing="10"
+                          RowSpacing="10"
+                          ColumnDefinitions="150,150">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Grid.GestureRecognizers>
+
+                        <widget:ItemCard Grid.Column="0"
+                                         Grid.Row="0" />
+                        <widget:ItemCard  Grid.Column="0"
+                                          Grid.Row="1" />
+                        <widget:ItemCard  Grid.Column="0"
+                                          Grid.Row="1" />
+                        <widget:ItemCard   Grid.Column="0"
+                                           Grid.Row="1" />
+
+                        <widget:ItemCard   Grid.Column="1"
+                                           Grid.Row="0" /> 
+
+                        <widget:ItemCard  Grid.Column="1"
+                                          Grid.Row="1" />
+
+                    </Grid>-->
+
+
+                </StackLayout>
+                <!--<StackLayout AbsoluteLayout.LayoutBounds="20,500,370,250">
+                    <Button BackgroundColor="#b01eb0"
+                            CornerRadius="20"
+                            
+                            Clicked="Button_Clicked"
+                            WidthRequest="150"
+                            Text="update car info" />
+
+
+                </StackLayout>-->
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+
+    </StackLayout>
+
+</ContentPage>

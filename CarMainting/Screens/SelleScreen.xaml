@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarMainting.Screens.SellerScreen"
+      
+             Title="{Binding ServiceName}">
+    <StackLayout>
+      
+        <Frame>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Frame.GestureRecognizers>
+            <FlexLayout JustifyContent="SpaceBetween">
+            <StackLayout Orientation="Vertical" HeightRequest="55">
+                <Label Text="Abas Key" TextColor="Black" FontSize="17" />
+                <Label Text="besid/DeebMall abas" TextColor="Grey" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                <Label Text="Open" TextColor="Green"/>
+                    <Label Text="2 kn"
+                        
+                           TextColor="Grey" />
+                    
+                </StackLayout>
+            </FlexLayout>
+          
+        </Frame>
+    </StackLayout>
+</ContentPage>
